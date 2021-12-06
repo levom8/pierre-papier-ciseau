@@ -1,52 +1,68 @@
-let computerSelection;
-let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
-let choix = prompt("Pick either Pierre, Papier ou Ciseau")
+let choix = prompt("Pick either Pierre, Papier ou Ciseau");
+
+
+function game() {
+// check if CPU won the round so 0 pts but if I win the round +1pt
 
 function computerPlay() {
     let arr = ["Papier","Pierre","Ciseau"]
-    computerSelection = arr[Math.floor(Math.random() * arr.length)];
-    return computerSelection;
+    return arr[Math.floor(Math.random() * arr.length)];
 }
 
 function playerPlay(hand) {
-    
     let capLetter = hand.slice(0,1).toUpperCase();
     let smallLetter = hand.slice(1).toLowerCase();
-    
-    playerSelection = capLetter + smallLetter;
+    let fullHand = capLetter + smallLetter;
 
-    if (!(playerSelection == "Papier" || playerSelection == "Pierre" || playerSelection == "Ciseau")) {
+    if (!(fullHand == "Papier" || fullHand == "Pierre" || fullHand == "Ciseau")) {
         alert("ERROR, type either \"Papier\", \"Pierre\" ou \"Ciseau\"");
     }
     else {
-        return(playerSelection);
+        return(fullHand);
     }
-    }
+}
 
-function playRound(computerSelection, playerSelection) {
-    if (computerSelection == "Papier" && playerSelection == "Pierre" || computerSelection == "Pierre" && playerSelection == "Ciseau" || computerSelection == "Ciseau" && playerSelection == "Papier") {
-        console.log(computerSelection);
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+function playRound(computer, player) {
+    console.log(`Computer played ${computer}`);
+    console.log(`You played ${player}`);
+    if (computer === player) {
+        return  `TIE! Retry`;
     }
-    else if (computerSelection == playerSelection) {
-        console.log(computerSelection);
-        return  "TIE! Retry";
+    else if ((computer == "Papier" && player == "Pierre") || 
+            (computer == "Pierre" && player == "Ciseau") || 
+            (computer == "Ciseau" && player == "Papier")) {
+        return `You lose! ${computer} beats ${player}`;
     }
     else {
-        console.log(computerSelection);
-        return `You won! ${playerSelection} beats ${computerSelection}`;
+        return `You won! ${player} beats ${computer}`;
     }
 }
 
-function game(input) {
-    console.log(input);
-    console.log(input);
-    console.log(input);
-    console.log(input);
+    for (i = 0; i < 6; i++) {
+        let computerSelection = computerPlay();
+
+        console.log(playRound(computerPlay(),playerPlay(choix)));
+    }
+    
+    // if (input.search(`You lose!`) > -1) {
+    //     return `Computer won ${computerScore++} point!`;
+    // }
+    // else if (input.search(`You won!`) > -1) {
+    //     return `You won ${playerScore++} point!`;
+    // }
+    // else {
+    //     return `This is a draw`;
+    // }
+
+let playerSelection = playerPlay(choix);
+let round = playRound(computerSelection, playerSelection);
 }
 
-computerPlay();
-playerPlay(choix);
-game(playRound(computerSelection, playerSelection));
+
+
+let finalScore = game();
+// console.log(finalScore);
+
+// game(playRound(computerSelection, playerSelection));
