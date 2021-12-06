@@ -1,17 +1,15 @@
 let playerScore = 0;
 let computerScore = 0;
-let choix = prompt("Pick either Pierre, Papier ou Ciseau");
 
-
-function game() {
-// check if CPU won the round so 0 pts but if I win the round +1pt
-
+// Generate a random hand for the CPU
 function computerPlay() {
     let arr = ["Papier","Pierre","Ciseau"]
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function playerPlay(hand) {
+// Function that will request input for Player's hand and format it
+function playerPlay() {
+    let hand = prompt("Pick either Pierre, Papier ou Ciseau");
     let capLetter = hand.slice(0,1).toUpperCase();
     let smallLetter = hand.slice(1).toLowerCase();
     let fullHand = capLetter + smallLetter;
@@ -24,9 +22,8 @@ function playerPlay(hand) {
     }
 }
 
+// Function that will play a round a compare hands to see who won
 function playRound(computer, player) {
-    console.log(`Computer played ${computer}`);
-    console.log(`You played ${player}`);
     if (computer === player) {
         return  `TIE! Retry`;
     }
@@ -40,29 +37,23 @@ function playRound(computer, player) {
     }
 }
 
-    for (i = 0; i < 6; i++) {
-        let computerSelection = computerPlay();
-
-        console.log(playRound(computerPlay(),playerPlay(choix)));
-    }
-    
-    // if (input.search(`You lose!`) > -1) {
-    //     return `Computer won ${computerScore++} point!`;
-    // }
-    // else if (input.search(`You won!`) > -1) {
-    //     return `You won ${playerScore++} point!`;
-    // }
-    // else {
-    //     return `This is a draw`;
-    // }
-
-let playerSelection = playerPlay(choix);
-let round = playRound(computerSelection, playerSelection);
+// function should play 5 rounds of game then decide winner after counting points
+function game() {
+    for (i = 1; i <= 5; i++) {
+        console.log(playRound(computerPlay(),playerPlay()));
+        //     if (round.search(`You lose!`) > -1) {
+        //    return `Computer won ${computerScore++} point!`;
+        //     }
+        //     else if (round.search(`You won!`) > -1) {
+        //     return `You won ${playerScore++} point!`;
+        //     }
+        //     else {
+        //     return `This is a draw`;
+        //     }
+        }   
 }
 
-
-
+let computerSelection = computerPlay();
+let playerSelection = playerPlay();
+let round = playRound(computerSelection, playerSelection);
 let finalScore = game();
-// console.log(finalScore);
-
-// game(playRound(computerSelection, playerSelection));
