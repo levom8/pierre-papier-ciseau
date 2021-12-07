@@ -16,6 +16,7 @@ function playerPlay() {
 
     if (!(fullHand == "Papier" || fullHand == "Pierre" || fullHand == "Ciseau")) {
         alert("ERROR, type either \"Papier\", \"Pierre\" ou \"Ciseau\"");
+        return playerPlay();
     }
     else {
         return(fullHand);
@@ -25,7 +26,7 @@ function playerPlay() {
 // Function that will play a round a compare hands to see who won
 function playRound(computer, player) {
     if (computer === player) {
-        return  `TIE! Retry`;
+        return  `TIE! ${computer} matches ${player}! Retry`;
     }
     else if ((computer == "Papier" && player == "Pierre") || 
             (computer == "Pierre" && player == "Ciseau") || 
@@ -39,21 +40,32 @@ function playRound(computer, player) {
 
 // function should play 5 rounds of game then decide winner after counting points
 function game() {
-    for (i = 1; i <= 5; i++) {
-        console.log(playRound(computerPlay(),playerPlay()));
-        //     if (round.search(`You lose!`) > -1) {
-        //    return `Computer won ${computerScore++} point!`;
-        //     }
-        //     else if (round.search(`You won!`) > -1) {
-        //     return `You won ${playerScore++} point!`;
-        //     }
-        //     else {
-        //     return `This is a draw`;
-        //     }
+    for (i = 1; i <= 3; ++i) {
+        let round = playRound(computerPlay(),playerPlay());
+        console.log(round);
+            if (round.search(`You lose!`) > -1) {
+           alert(`Computer won ${++computerScore} point!`);
+        //    return computerScore;
+            }
+            else if (round.search(`You won!`) > -1) {
+            alert(`You won ${++playerScore} point!`);
+            // return playerScore;
+            }
+            else {
+            alert(`This is a draw`);
+            }
         }   
+    if (playerScore > computerScore) {
+        alert(`I won with a total of ${playerScore} points!`)
+    }    
+    else if (computerScore > playerScore) {
+        alert(`I lost...Computer has a total of ${computerScore} points`)
+    }
+    else {
+        alert('Rematch?')
+    }
 }
 
-let computerSelection = computerPlay();
-let playerSelection = playerPlay();
-let round = playRound(computerSelection, playerSelection);
-let finalScore = game();
+game()
+
+
