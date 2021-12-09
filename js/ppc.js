@@ -40,7 +40,7 @@ function playRound(computer, player) {
 
 // function should play 5 rounds of game then decide winner after counting points
 function game() {
-    for (i = 1; i <= 3; ++i) {
+    for (i = 1; i <= 5; ++i) {
         let round = playRound(computerPlay(),playerPlay());
         console.log(round);
             if (round.search(`You lose!`) > -1) {
