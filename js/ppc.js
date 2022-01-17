@@ -9,7 +9,7 @@ function computerPlay() {
 
 // Function that will request input for Player's hand and format it
 function playerPlay() {
-    let hand = prompt("Pick either Pierre, Papier ou Ciseau");
+    // let hand = prompt("Pick either Pierre, Papier ou Ciseau");
     let capLetter = hand.slice(0,1).toUpperCase();
     let smallLetter = hand.slice(1).toLowerCase();
     let fullHand = capLetter + smallLetter;
@@ -26,46 +26,49 @@ function playerPlay() {
 // Function that will play a round a compare hands to see who won
 function playRound(computer, player) {
     if (computer === player) {
-        return  `TIE! ${computer} matches ${player}! Retry`;
+        alert(`TIE! ${computer} matches ${player}! Retry`);
     }
     else if ((computer == "Papier" && player == "Pierre") || 
             (computer == "Pierre" && player == "Ciseau") || 
             (computer == "Ciseau" && player == "Papier")) {
-        return `You lose! ${computer} beats ${player}`;
+        alert(`You lose! ${computer} beats ${player}`);
     }
     else {
-        return `You won! ${player} beats ${computer}`;
+        alert(`You won! ${player} beats ${computer}`);
     }
+    
 }
+
 
 // function should play 5 rounds of game then decide winner after counting points
-function game() {
-    for (i = 1; i <= 5; ++i) {
-        let round = playRound(computerPlay(),playerPlay());
-        console.log(round);
-            if (round.search(`You lose!`) > -1) {
-           alert(`Computer won ${++computerScore} point!`);
-        //    return computerScore;
-            }
-            else if (round.search(`You won!`) > -1) {
-            alert(`You won ${++playerScore} point!`);
-            // return playerScore;
-            }
-            else {
-            alert(`This is a draw`);
-            }
-        }   
-    if (playerScore > computerScore) {
-        alert(`I won with a total of ${playerScore} points!`)
-    }    
-    else if (computerScore > playerScore) {
-        alert(`I lost...Computer has a total of ${computerScore} points`)
-    }
-    else {
-        alert('Rematch?')
-    }
-}
+// function game() {
+//     for (i = 1; i <= 5; ++i) {
+//         let round = playRound(computerPlay(),playerPlay());
+//         console.log(round);
+//             if (round.search(`You lose!`) > -1) {
+//            alert(`Computer won ${++computerScore} point!`);
+//         //    return computerScore;
+//             }
+//             else if (round.search(`You won!`) > -1) {
+//             alert(`You won ${++playerScore} point!`);
+//             // return playerScore;
+//             }
+//             else {
+//             alert(`This is a draw`);
+//             }
+//         }   
+//     if (playerScore > computerScore) {
+//         alert(`I won with a total of ${playerScore} points!`)
+//     }    
+//     else if (computerScore > playerScore) {
+//         alert(`I lost...Computer has a total of ${computerScore} points`)
+//     }
+//     else {
+//         alert('Rematch?')
+//     }
+// }
 
-game()
+// game()
 
 
+playRound(playerPlay(),computerPlay())
