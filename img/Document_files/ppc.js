@@ -3,34 +3,34 @@ let computerScore = 0;
 
 // Generate a random hand for the CPU
 function computerPlay() {
-    let arr = ["Feu","Eau","Plante"]
+    let arr = ["Papier","Pierre","Ciseau"]
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
 // Function that will request input for Player's hand and format it
-// function playerPlay() {
+function playerPlay() {
     // let hand = prompt("Pick either Pierre, Papier ou Ciseau"); -- old instructions
     // let capLetter = hand.slice(0,1).toUpperCase(); -- old instructions
     // let smallLetter = hand.slice(1).toLowerCase(); -- old instructions
     // let fullHand = capLetter + smallLetter; -- old instructions
     
-//     if (!(fullHand == "Papier" || fullHand == "Pierre" || fullHand == "Ciseau")) {
-//         alert("ERROR, type either \"Papier\", \"Pierre\" ou \"Ciseau\"");
-//         return playerPlay();
-//     }
-//     else {
-//         return(fullHand);
-//     }
-// }
+    if (!(fullHand == "Papier" || fullHand == "Pierre" || fullHand == "Ciseau")) {
+        alert("ERROR, type either \"Papier\", \"Pierre\" ou \"Ciseau\"");
+        return playerPlay();
+    }
+    else {
+        return(fullHand);
+    }
+}
 
 // Function that will play a round a compare hands to see who won
-function playRound(player, computer) {
+function playRound(computer, player) {
     if (computer === player) {
         alert(`TIE! ${computer} matches ${player}! Retry`);
     }
-    else if ((computer == "Feu" && player == "Plante") || 
-            (computer == "Plante" && player == "Eau") || 
-            (computer == "Eau" && player == "Feu")) {
+    else if ((computer == "Papier" && player == "Pierre") || 
+            (computer == "Pierre" && player == "Ciseau") || 
+            (computer == "Ciseau" && player == "Papier")) {
         alert(`You lose! ${computer} beats ${player}`);
     }
     else {
@@ -69,21 +69,8 @@ function playRound(player, computer) {
 
 // game()
 
+const btnFeu = document.querySelector('#btnFeu');
+btnFeu.addEventListener('click', () => {alert("hello");});
+
 
 // playRound(playerPlay(),computerPlay())
-
-const btnFeu = document.querySelector('#btnFeu'); 
-btnFeu.addEventListener('click', () => { 
-    playRound(fullHand="Feu",computerPlay())
- });
-
- const btnEau = document.querySelector('#btnEau'); 
-btnEau.addEventListener('click', () => { 
-    playRound(fullHand="Eau",computerPlay())
- });
-
- const btnPlante = document.querySelector('#btnPlante'); 
-btnPlante.addEventListener('click', () => { 
-    playRound(fullHand="Plante",computerPlay())
- });
-

@@ -1,6 +1,6 @@
 * {
     font-family: 'Courier New', Courier, monospace;
-    /* border: 1px black solid; */
+    border: 1px black solid;
 }
 
 body {
@@ -15,9 +15,8 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 10px;
-    padding: 10px 20px 10px 20px;
-    background-color:grey;
+    border: 1px black solid;
+    padding: 0 10px 0 10px;
 }
 
 .logo {
@@ -34,6 +33,7 @@ body {
 }
 
 ul {
+    background: red;
     display: flex;
     list-style-type: none;
     gap: 10px;
@@ -41,24 +41,20 @@ ul {
 
 a {
     text-decoration: none;
-    color: inherit;
-    color:ivory;
-    font-weight: bolder;
 }
 
 .corps {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 60px;
+    margin-top: 100px;
 }
 
 .luffy-banner {
     width:500px;
     height: 200px;
     object-fit: cover;
-    border: 60px black dashed;
-    margin: 20px;
+    border: 3px darkgray dashed;
 }
 
 .butt {
