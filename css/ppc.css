@@ -36,6 +36,11 @@ body {
     margin: -150% -100%;
 }
 
+.header-links {
+    width: 200px;
+    margin: 0px;
+    flex: 1;
+}
 
 ul {
     display: flex;
@@ -85,6 +90,7 @@ button {
     cursor: pointer;
     border-radius: 40%;
     transition: all 0.2s;
+
 }
 
 button:hover {
@@ -96,6 +102,8 @@ button:hover {
     display: flex;
     flex-direction: column;
     text-align: center;
+    flex-wrap: wrap;
+
 }
 
 .feu {
