@@ -100,19 +100,19 @@ button:hover {
 
 .feu {
     background-size: 140%;
-    background-image: url('/img/feu.jpeg');   
+    background-image: url('img/feu.jpeg');   
     background-position: -20px;
 }
 
 .eau {
     background-size: 150%;
-    background-image: url('/img/eau.jpg');   
+    background-image: url('img/eau.jpg');   
     background-position: -25px;
 }
 
 .plante {
     background-size: 120%;
-    background-image: url('/img/plante.jpg'); 
+    background-image: url('img/plante.jpg'); 
     background-position: 100px;  
 }
 
