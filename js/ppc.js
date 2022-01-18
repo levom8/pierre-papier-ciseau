@@ -25,19 +25,46 @@ function computerPlay() {
 
 // Function that will play a round a compare hands to see who won
 function playRound(player, computer) {
+    const result = document.querySelector('.result')
+    const pScore = document.querySelector('.pScore')
+    const cScore = document.querySelector('.cScore')
+
     if (computer === player) {
-        alert(`TIE! ${computer} matches ${player}! Retry`);
+        // alert(`TIE! ${computer} matches ${player}! Retry`);
+        result.textContent = `TIE! ${computer} matches ${player}! Retry`;
     }
     else if ((computer == "Feu" && player == "Plante") || 
             (computer == "Plante" && player == "Eau") || 
             (computer == "Eau" && player == "Feu")) {
-        alert(`You lose! ${computer} beats ${player}`);
+        // alert(`You lose! ${computer} beats ${player}`);
+        result.textContent = `You lost this round! ${computer} beats ${player}`;
+        computerScore++;
+        cScore.textContent = computerScore; //need to do the parseInt since textContent is text type
     }
     else {
-        alert(`You won! ${player} beats ${computer}`);
+        // alert(`You won! ${player} beats ${computer}`);
+        result.textContent = `You won this round! ${player} beats ${computer}`;
+        playerScore++;
+        pScore.textContent = playerScore;
     }
-    
+
+    if (playerScore >= 5) {
+        alert('You won!')
+        playerScore = 0;
+        computerScore = 0;
+        pScore.textContent = playerScore;
+        cScore.textContent = computerScore;
+    }
+    if (computerScore >= 5) {
+        alert('You lost!')
+        playerScore = 0;
+        computerScore = 0;
+        pScore.textContent = playerScore;
+        cScore.textContent = computerScore;
+    }
 }
+
+
 
 // function should play 5 rounds of game then decide winner after counting points
 // function game() {
